@@ -4,20 +4,20 @@
 #     or 'Err' with an error tag.
 # Results can be pattern matched, mapped, and chained in different ways.
 #
-app [main] {
-    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.16.0/O00IPk-Krg_diNS2dVWlI0ZQP794Vctxzv0ha96mK0E.tar.br",
+app [main!] {
+    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.19.0/Hj-J_zxz7V9YurCSTFcFdu6cQJie4guzsPMUi5kBYUk.tar.br",
 }
 
 import pf.Stdout
 
-main =
-    Str.toU8 "14"
-    |> Result.map \x -> x * 2
-    |> Result.withDefault 17
-    |> Num.toStr
-    |> Stdout.line!
+main! = |_|
+    Str.to_u8 "14"
+    |> Result.map_ok |x| x * 2
+    |> Result.with_default 17
+    |> Num.to_str
+    |> Stdout.line!?
 
     # Pattern matching
-    when Str.toU8 "14" is
-        Ok x -> Stdout.line "Value is $(Num.toStr x)"
-        Err InvalidNumStr -> Stdout.line "Values is not a U8"
+    when Str.to_u8 "14" is
+        Ok x -> Stdout.line! "Value is ${Num.to_str x}"
+        Err InvalidNumStr -> Stdout.line! "Value is not a U8"

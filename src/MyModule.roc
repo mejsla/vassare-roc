@@ -7,9 +7,9 @@ module [cube, sqr]
 
 ## Calculate the cube of 'x'.
 cube : Num a -> Num a
-cube = \x ->
+cube = |x|
     x * x * x
 
 sqr : Num a -> Num a
-sqr = \x ->
+sqr = |x|
     x * x

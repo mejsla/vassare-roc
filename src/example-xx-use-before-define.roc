@@ -1,13 +1,13 @@
 #
 # Since everything is immutable, you can use a variable before defining it. 🙃
 #
-app [main] {
-    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.16.0/O00IPk-Krg_diNS2dVWlI0ZQP794Vctxzv0ha96mK0E.tar.br",
+app [main!] {
+    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.19.0/Hj-J_zxz7V9YurCSTFcFdu6cQJie4guzsPMUi5kBYUk.tar.br",
 }
 
 import pf.Stdout
 
-main =
+main! = |_|
     foo = bar + 3
     bar = 5
-    Stdout.line! "foo = $(Num.toStr foo)"
+    Stdout.line! "foo = ${Num.to_str foo}"

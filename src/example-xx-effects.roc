@@ -1,19 +1,19 @@
 #
 # Effects.
 #
-app [main] {
-    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.16.0/O00IPk-Krg_diNS2dVWlI0ZQP794Vctxzv0ha96mK0E.tar.br",
+app [main!] {
+    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.19.0/Hj-J_zxz7V9YurCSTFcFdu6cQJie4guzsPMUi5kBYUk.tar.br",
 }
 
 import pf.Stdout
 import pf.Utc
 
-main =
+main! = |_|
     startTime = Utc.now! {}
     sum =
         List.range { start: At 0, end: At 50_000 }
-        |> List.walk 0 (\s, x -> s + x)
-    Stdout.line! "Sum: $(Num.toStr sum)"
+        |> List.walk 0 (|s, x| s + x)
+    Stdout.line!? "Sum: ${Num.to_str sum}"
     endTime = Utc.now! {}
-    runTime = Utc.deltaAsNanos startTime endTime
-    Stdout.line "Run time: $(Num.toStr runTime) nanos"
+    runTime = Utc.delta_as_nanos startTime endTime
+    Stdout.line! "Run time: ${Num.to_str runTime} nanos"

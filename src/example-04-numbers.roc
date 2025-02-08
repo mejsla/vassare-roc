@@ -6,8 +6,8 @@
 # - fixed point type Dec with 18 decimals
 # - no BigDecimal
 #
-app [main] {
-    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.16.0/O00IPk-Krg_diNS2dVWlI0ZQP794Vctxzv0ha96mK0E.tar.br",
+app [main!] {
+    pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.19.0/Hj-J_zxz7V9YurCSTFcFdu6cQJie4guzsPMUi5kBYUk.tar.br",
 }
 
 import pf.Stdout
@@ -19,11 +19,11 @@ aFloatingPointNumber = 33.01f64
 
 aDecimalNumber = 45.98dec
 
-main =
-    Stdout.line! "$(Num.toStr aNumber)"
-    Stdout.line! "$(Num.toStr anotherNumber)"
-    Stdout.line! "$(Num.toStr aFloatingPointNumber)"
-    Stdout.line! "$(Num.toStr aDecimalNumber)"
-    Stdout.line! ""
-    Stdout.line! "$(Num.toStr (0.1f64 + 0.2f64))"
-    Stdout.line! "$(Num.toStr (0.1dec + 0.2dec))"
+main! = |_|
+    Stdout.line!? "${Num.to_str aNumber}"
+    Stdout.line!? "${Num.to_str anotherNumber}"
+    Stdout.line!? "${Num.to_str aFloatingPointNumber}"
+    Stdout.line!? "${Num.to_str aDecimalNumber}"
+    Stdout.line!? ""
+    Stdout.line!? "${Num.to_str (0.1f64 + 0.2f64)}"
+    Stdout.line! "${Num.to_str (0.1dec + 0.2dec)}"
